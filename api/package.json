@@ -16,12 +16,16 @@
   "devDependencies": {
     "@types/node": "^22.10.5",
     "nodemon": "^3.1.9",
+    "prisma": "^6.2.1",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@types/connect-pg-simple": "^7.0.3",
     "@types/express": "^5.0.0",
+    "@types/express-session": "^1.18.1",
+    "@types/passport-local": "^1.0.38",
     "express": "^4.21.2"
   }
 }
