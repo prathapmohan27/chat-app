@@ -22,10 +22,15 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@prisma/client": "^6.2.1",
     "@types/connect-pg-simple": "^7.0.3",
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.1",
     "@types/passport-local": "^1.0.38",
-    "express": "^4.21.2"
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "eslint": "^9.18.0",
+    "express": "^4.21.2",
+    "prettier": "^3.4.2"
   }
 }
