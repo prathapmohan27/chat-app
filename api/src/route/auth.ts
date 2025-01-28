@@ -1,9 +1,17 @@
-import express from 'express';
+import express, { Router } from 'express';
+import passport from 'passport';
+import { register } from '../controller/auth.controller';
+import { userValidationRules, validate } from '../middleware/authMiddleware';
 
-const route = express.Router();
+const authRoute: Router = express.Router();
 
-route.post('', (req, res) => {
-  res.send('Hello World!');
-});
+authRoute.post(
+  '/login',
+  passport.authenticate('local', {
+    failureRedirect: '/login',
+    successRedirect: '/profile',
+  }),
+);
+authRoute.post('/register', userValidationRules(), validate, register);
 
-module.exports = route;
+export default authRoute;

@@ -1,12 +1,21 @@
-import express from 'express';
+import express, { NextFunction, Response, Request } from 'express';
 import session from 'express-session';
 import dotenv from 'dotenv';
 import connectPgSimple from 'connect-pg-simple';
+import cors from 'cors';
+import passport from 'passport';
+import { startPassport } from './config/passport';
+
+import { authRoute } from './route/index';
 
 const app: express.Application = express();
 
+startPassport();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(passport.initialize());
+app.use(passport.session());
 dotenv.config();
 
 const port: number = 3000;
@@ -28,8 +37,22 @@ app.use(
   }),
 );
 
-app.get('/', (req: express.Request, res: express.Response) => {
-  res.send('Hello World!');
+app.use('/api/auth', authRoute);
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  if (!err) return next();
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+process.on('uncaughtException', (err) => {
+  console.log(err);
+  return process.exit(1);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.log(err);
+  return process.exit(1);
 });
 
 app.listen(port, () => {

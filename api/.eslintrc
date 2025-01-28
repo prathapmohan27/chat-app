@@ -2,5 +2,19 @@
   "parser": "@typescript-eslint/parser",
   "extends": ["plugin:@typescript-eslint/recommended"],
   "parserOptions": { "ecmaVersion": 2018, "sourceType": "module" },
-  "rules": {}
+  "rules": {
+    "no-console": "off", // Allow console.log (useful in Node.js)
+    "no-process-exit": "warn", // Warn when using process.exit()
+    "callback-return": "warn", // Ensure callback is returned properly
+    "consistent-return": "error", // Enforce consistent return statements
+    "eqeqeq": ["error", "always"], // Enforce strict equality
+    "no-undef": "error", // Disallow the use of undeclared variables
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }], // Allow unused variables starting with _
+    "prefer-const": "error", // Prefer const where applicable
+    "no-var": "error", // Disallow var declarations
+    "arrow-spacing": ["error", { "before": true, "after": true }], // Enforce spacing around arrow functions
+    "node/no-missing-require": "error", // Prevent missing imports
+    "node/no-unpublished-require": "off", // Allow devDependencies in require statements
+    "node/no-deprecated-api": "error",
+  },
 }
