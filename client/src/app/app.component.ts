@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { HeaderComponent } from './component/header/header.component';
 
 @Component({
-  imports: [RouterModule],
+  imports: [RouterModule, MatButtonModule, HeaderComponent],
   selector: 'app-root',
   template: `
-    <h1>{{ title }}</h1>
-    <p>test</p>
+    <app-header />
     <router-outlet />
   `,
   styles: [],
